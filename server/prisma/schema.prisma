@@ -27,7 +27,7 @@ model Password {
   updatedAt DateTime @updatedAt
 
   name     String
-  email    String
+  email    String?
   username String?
   password String
   website  String

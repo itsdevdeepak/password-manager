@@ -10,10 +10,6 @@ export const errorHandler = (
   res: Response,
   _next: NextFunction
 ) => {
-  // if (err instanceof Error) {
-  //   throw new ServerError();
-  // }
-
   if (err instanceof ValidationError) {
     res.status(err.statusCode).send({ errors: err.searializedError() });
     return;
