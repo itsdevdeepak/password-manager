@@ -1,0 +1,19 @@
+{
+  "name": "password-manager-cli",
+  "version": "1.0.0",
+  "description": "cli for password manager",
+  "main": "bin/index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "start": "./bin/index.js",
+    "build": "yarn tsc && yarn chmod",
+    "chmod": "chmod u+x ./bin/index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "typescript": "^4.9.4"
+  }
+}
