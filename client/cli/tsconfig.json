@@ -1,10 +1,15 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "target": "ES2022",
+    "module": "ES2022",
+    "lib": ["ES2022"],
     "outDir": "./bin",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
+    "rootDir": "./src",
+
     "strict": true,
-    "skipLibCheck": true
-  }
+    "moduleResolution": "node"
+    // "allowSyntheticDefaultImports": false,
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/node_modules/**/*.ts"]
 }

@@ -1,3 +1,3 @@
 #!/usr/bin/env node
-"use strict";
-console.log("Hello from my-script👋");
+import { createUser } from "./auth.js";
+createUser({ email: "email@email.com", password: "asdsa" });
