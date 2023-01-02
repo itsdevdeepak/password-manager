@@ -1,6 +1,6 @@
 import axios from "axios";
 
-type Password = {
+export type Password = {
   name?: string;
   website: string;
   username?: string;
@@ -8,7 +8,7 @@ type Password = {
   password: string;
 };
 
-const url = "http://localhost:3001";
+const url = process.env.PM_URL || "http://localhost:3001";
 
 const getConfig = (token: string) => ({
   headers: { Authorization: `Bearer ${token}` },
@@ -17,7 +17,7 @@ const getConfig = (token: string) => ({
 export const getAllPassword = async (token: string) => {
   try {
     const passwordList: Password = await (
-      await axios.get(`${url}/passwords`, getConfig(token))
+      await axios.get(`${url}/api/passwords`, getConfig(token))
     ).data;
     return passwordList;
   } catch (error) {
@@ -32,7 +32,7 @@ export const getAllPassword = async (token: string) => {
 export const getPassword = async (token: string, id: string) => {
   try {
     const password: Password = await (
-      await axios.get(`${url}/password/${id}`, getConfig(token))
+      await axios.get(`${url}/api/password/${id}`, getConfig(token))
     ).data;
     return password;
   } catch (error) {
@@ -47,7 +47,7 @@ export const getPassword = async (token: string, id: string) => {
 export const createPassword = async (token: string, password: Password) => {
   try {
     const res: Password = await (
-      await axios.post(`${url}/password`, password, getConfig(token))
+      await axios.post(`${url}/api/password`, password, getConfig(token))
     ).data;
     return res;
   } catch (error) {
@@ -66,7 +66,7 @@ export const updatePassword = async (
 ) => {
   try {
     const res: Password = await (
-      await axios.post(`${url}/password/${id}`, password, getConfig(token))
+      await axios.post(`${url}/api/password/${id}`, password, getConfig(token))
     ).data;
     return res;
   } catch (error) {
@@ -81,7 +81,7 @@ export const updatePassword = async (
 export const deletePassword = async (token: string, id: string) => {
   try {
     const res: Password = await (
-      await axios.delete(`${url}/password/${id}`, getConfig(token))
+      await axios.delete(`${url}/api/password/${id}`, getConfig(token))
     ).data;
     return res;
   } catch (error) {

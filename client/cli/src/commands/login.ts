@@ -1,8 +1,10 @@
 import inquirer from "inquirer";
-import { signIn } from "../api/user";
-import { isEmail, isPassword } from "../utils/validation";
+import ora from "ora";
+import { signIn } from "../api/user.js";
+import { isEmail } from "../utils/validation.js";
 
-export const logIn = async () => {
+export const logIn = async (arg1?: string, arg2?: string) => {
+  const spinner = ora();
   const { email, password } = await inquirer.prompt([
     {
       message: "Your Email",
@@ -16,19 +18,17 @@ export const logIn = async () => {
     },
   ]);
   if (!isEmail(email)) {
+    spinner.fail("validation failed");
     console.log("not a valid email, please try again!");
     process.exit(1);
   }
-
-  if (!isPassword(password)) {
-    console.log("not a valid password, please try strong password again!");
-    process.exit(1);
-  }
+  spinner.start("Loggin in...");
   const res = await signIn({ email, password });
   if (res.error || res.errors) {
+    spinner.fail("error occure");
     console.error(res);
     process.exit(1);
   }
-  console.log("🎉 successfully logged in");
+  spinner.succeed("🎉 successfully logged in");
   return res.token;
 };

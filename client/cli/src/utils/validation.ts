@@ -5,3 +5,4 @@ const passwordPattern =
 
 export const isEmail = (email: string) => email.match(emailPattern);
 export const isPassword = (password: string) => password.match(passwordPattern);
+export const isWebUrl = (url: string) => url.length > 2;
