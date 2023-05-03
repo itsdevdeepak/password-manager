@@ -2,14 +2,6 @@
 
 Custom Browser extension that lets your manage your passwords and it can also generate password with custom algoriths that is easy to remember.
 
-
-
-## Run Locally
-
-[**Setup Backend 🔗**](https://github.com/itsdevdeepak/my-med-identity-backend)
-<br>
-
-
 ## Screenshots
 
 <div style="display: flex; flex: row wrap; gap: 20px">
